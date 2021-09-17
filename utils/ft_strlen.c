@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rsarri-c <rsarri-c@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/14 12:25:07 by rsarri-c          #+#    #+#             */
-/*   Updated: 2021/09/16 13:03:03 by rsarri-c         ###   ########.fr       */
+/*   Created: 2021/09/15 16:49:40 by rsarri-c          #+#    #+#             */
+/*   Updated: 2021/09/15 16:49:44 by rsarri-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "../includes/ft_printf.h"
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <stdint.h>
-# include <unistd.h>
+size_t	ft_strlen(char const *s)
+{
+	size_t	i;
 
-int		ft_printf(const char *cad, ...);
-int		ft_putchar_fd(char c, int fd);
-char	*ft_strdup(const char *s1);
-size_t	ft_strlen(char const *s);
-void	ft_putnbr_fd(int n, int fd, int *pchar);
-
-#endif
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
+}

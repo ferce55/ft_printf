@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rsarri-c <rsarri-c@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/14 12:25:07 by rsarri-c          #+#    #+#             */
-/*   Updated: 2021/09/16 13:03:03 by rsarri-c         ###   ########.fr       */
+/*   Created: 2021/09/15 16:45:30 by rsarri-c          #+#    #+#             */
+/*   Updated: 2021/09/15 16:46:11 by rsarri-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "../includes/ft_printf.h"
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <stdint.h>
-# include <unistd.h>
+char	*ft_strdup(const char *s1)
+{
+	int		l;
+	char	*str;
+	int		i;
 
-int		ft_printf(const char *cad, ...);
-int		ft_putchar_fd(char c, int fd);
-char	*ft_strdup(const char *s1);
-size_t	ft_strlen(char const *s);
-void	ft_putnbr_fd(int n, int fd, int *pchar);
-
-#endif
+	l = ft_strlen(s1);
+	str = (char *)malloc(sizeof(char) * l + 1);
+	i = 0;
+	if (str == NULL)
+		return (NULL);
+	while (i < l)
+	{
+		str[i] = s1[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
