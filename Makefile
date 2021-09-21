@@ -3,15 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rsarri-c <rsarri-c@student.42madrid.com    +#+  +:+       +#+         #
+#    By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/14 14:11:06 by rsarri-c          #+#    #+#              #
-#    Updated: 2021/09/16 13:10:12 by rsarri-c         ###   ########.fr        #
+#    Updated: 2021/09/21 11:43:46 by ricardo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS	=	./srcs/ft_printf.c ./utils/ft_putchar_fd.c ./utils/ft_strdup.c \
-			./utils/ft_strlen.c ./utils/ft_putnbr_fd.c
+			./utils/ft_strlen.c ./utils/ft_putnbr_fd.c ./utils/ft_strlcpy.c \
+			./utils/ft_putunbr.c ./utils/ft_itoh.c
 
 OBJS	= $(SRCS:.c=.o)
 

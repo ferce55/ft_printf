@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 14:25:35 by rsarri-c          #+#    #+#             */
-/*   Updated: 2021/09/18 19:42:49 by rsarri-c         ###   ########.fr       */
+/*   Updated: 2021/09/21 12:03:59 by ricardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-#include <stdarg.h>
-#include <stdint.h>
 
 static int	print_str(char *cad, int im)
 {
@@ -44,7 +42,19 @@ static char	*ft_itop(void *ptr)
 
 	hex = ft_itoh((uintptr_t)ptr, 0);
 	len = ft_strlen(hex);
-	pointer = malloc(len + 4);
+	pointer = malloc(len + 3);
+	if (!pointer)
+		return (0);
+	i = 0;
+	j = 0;
+	ft_strlcpy(pointer, "0x", 3);
+	while (pointer[i])
+		i++;
+	while (hex[j])
+		pointer[i++] = hex[j++];
+	pointer[i] = '\0';
+	free(hex);
+	return (pointer);
 }
 
 static int	ft_format(char c1, char c2, va_list args)
@@ -57,15 +67,15 @@ static int	ft_format(char c1, char c2, va_list args)
 	else if (c1 == '%' && c2 == 's')
 		pchar = print_str(va_arg(args, char *), 0);
 	else if (c1 == '%' && c2 == 'p')
-		printf("implementar");
+		pchar = print_str(ft_itop(va_arg(args, unsigned int *)), 1);
 	else if (c1 == '%' && (c2 == 'd' || c2 == 'i'))
 		ft_putnbr_fd(va_arg(args, int), 1, &pchar);
 	else if (c1 == '%' && c2 == 'u')
-		printf("implementar");
+		ft_putunbr(va_arg(args, long), &pchar);
 	else if (c1 == '%' && c2 == 'x')
-		printf("implementar");
+		pchar = print_str(ft_itoh(va_arg(args, unsigned int), 0), 1);
 	else if (c1 == '%' && c2 == 'X')
-		printf("implementar");
+		pchar = print_str(ft_itoh(va_arg(args, unsigned int), 1), 1);
 	else if (c1 == '%' && c2 == '%')
 		pchar = ft_putchar_fd('%', 1);
 	else
@@ -102,7 +112,7 @@ int	ft_printf(const char *str, ...)
 	return (count);
 }
 
-void bye()
+/*void bye()
 {
 	system("leaks -q a.out");
 }
@@ -113,8 +123,8 @@ int	main(void)
 	char	*str;
 
 	str = "hola que tal";
-	c1 = printf("%s hola %p\n", NULL, &c1);
-	count = ft_printf("%s hola %p\n", NULL, &c1);
+	c1 = printf("%s hola %p\n", "  ", &c1);
+	count = ft_printf("%s hola %p\n", "  ", &c1);
 	printf("contador: %d | %d", count, c1);
 	atexit(bye);
-}
+}*/
