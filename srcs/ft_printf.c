@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 14:25:35 by rsarri-c          #+#    #+#             */
-/*   Updated: 2021/09/21 12:03:59 by ricardo          ###   ########.fr       */
+/*   Updated: 2021/09/26 13:20:32 by rsarri-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,8 @@ int	ft_printf(const char *str, ...)
 	va_end(args);
 	return (count);
 }
-
-/*void bye()
+/*
+void bye()
 {
 	system("leaks -q a.out");
 }
@@ -123,8 +123,8 @@ int	main(void)
 	char	*str;
 
 	str = "hola que tal";
-	c1 = printf("%s hola %p\n", "  ", &c1);
-	count = ft_printf("%s hola %p\n", "  ", &c1);
+	c1 = printf("%d hola %p\n", -1, &c1);
+	count = ft_printf("%d hola %p\n", -9, &c1);
 	printf("contador: %d | %d", count, c1);
-	atexit(bye);
-}*/
+	//atexit(bye);
+} */

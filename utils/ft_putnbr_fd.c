@@ -6,7 +6,7 @@
 /*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 11:33:17 by rsarri-c          #+#    #+#             */
-/*   Updated: 2021/09/18 16:06:07 by rsarri-c         ###   ########.fr       */
+/*   Updated: 2021/09/26 13:01:16 by rsarri-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,29 +17,29 @@ static void	ft_putchar(char c, int fd)
 	write(fd, &c, 1);
 }
 
-void	ft_putnbr_fd(int n, int fd, int *l)
+void	ft_putnbr_fd(int nb, int fd, int *l)
 {
 	*l = *l + 1;
-	if (n == -2147483648)
+	if (nb == -2147483648)
 	{
 		write(fd, "-2147483648", 11);
 		*l = 11;
 		return ;
 	}
-	if (n < 0)
+	if (nb < 0)
 	{
 		ft_putchar('-', fd);
-		n = -n;
-		ft_putnbr_fd(n, fd, l);
+		nb = -nb;
+		ft_putnbr_fd(nb, fd, l);
 	}
 	else
 	{
-		if (n > 9)
+		if (nb > 9)
 		{
-			ft_putnbr_fd(n / 10, fd, l);
-			ft_putchar(n % 10 + '0', fd);
+			ft_putnbr_fd(nb / 10, fd, l);
+			ft_putchar(nb % 10 + '0', fd);
 		}
 		else
-			ft_putchar(n + '0', fd);
+			ft_putchar(nb + '0', fd);
 	}
 }

@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/15 16:45:30 by rsarri-c          #+#    #+#             */
-/*   Updated: 2021/09/26 13:02:22 by rsarri-c         ###   ########.fr       */
+/*   Created: 2021/09/26 13:04:39 by rsarri-c          #+#    #+#             */
+/*   Updated: 2021/09/26 13:05:19 by rsarri-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-char	*ft_strdup(const char *s1)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	char	*s2;
+	size_t	i;
 
-	s2 = (char *)malloc(ft_strlen(s1) + 1);
-	if (!s2)
+	if (!dst && !src)
 		return (0);
-	ft_memcpy(s2, s1, ft_strlen(s1) + 1);
-	return (s2);
+	i = 0;
+	while (i < n)
+	{
+		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
+		i++;
+	}
+	return (dst);
 }
